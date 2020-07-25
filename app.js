@@ -36,15 +36,18 @@ app.post('/', (req, res, next) => {
 
     form.on('file', function(name, file){
         console.log('Uploaded ' + file.name);
-        manipulateSuccess = Manipulate();
+        //manipulateSuccess = Manipulate();
+        Manipulate();
         console.log("****************Finished manipulating");
     });
 
-    if(manipulateSuccess){
-        console.log("**********************Sending to download page");
-        res.sendFile(__dirname + '/download.html');
-    } else {
-        res.send("Conversion failed - please try again");
+    res.sendFile(__dirname + '/download.html');
+
+    // if(manipulateSuccess){
+    //     console.log("**********************Sending to download page");
+    //     res.sendFile(__dirname + '/download.html');
+    // } else {
+    //     res.send("Conversion failed - please try again");
     }
 
 });
