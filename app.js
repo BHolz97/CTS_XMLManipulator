@@ -41,6 +41,7 @@ app.post('/', (req, res, next) => {
     });
 
     if(manipulateSuccess){
+        console.log("**********************Sending to download page");
         res.sendFile(__dirname + '/download.html');
     } else {
         res.send("Conversion failed - please try again");
