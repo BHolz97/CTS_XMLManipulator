@@ -50,7 +50,7 @@ app.post('/', (req, res, next) => {
     //     res.send("Conversion failed - please try again");
     }
 
-});
+);
 
 app.post('/download', (req, res) => {
     res.download(__dirname + "/for_download/file_for_download.xml", 'new.xml', function (err) {
