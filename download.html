@@ -5,16 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 
     <title>XML Manipulator</title>
 </head>
 <body>
 
-    <h3>Download</h3>
+    <div class="container-fluid">
+        <div class="main-div">
+    
+            <div class="form-div">
 
-    <form action="/download" method="post">
-        <input type="submit" value="Download" />
-    </form>
+                <h3 id="btn-download">Your file is ready to download:</h3>
+
+                <form action="/download" method="post">
+                    <input class="btn-action" type="submit" value="Download" />
+                </form>
+            </div>
+            
+        </div>
+    </div>
     
 </body>
 </html>

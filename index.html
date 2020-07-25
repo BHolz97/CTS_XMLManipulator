@@ -5,17 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 
     <title>XML Manipulator</title>
 </head>
 <body>
 
-    <h3>Upload</h3>
+    <div class="container-fluid">
+        <div class="main-div">
 
-    <form action="/" enctype="multipart/form-data" method="post">
-        <input type="file" name="XMLFile" multiple="multiple" />
-        <input type="submit" value="Upload" />
-    </form>
+            <h2 id="upload-heading">Upload</h2>
+    
+            <div class="form-div">
+                <form action="/" enctype="multipart/form-data" method="post">
+                    <!-- <label id="lbl-select-file" for="XMLFile">Please select a file to upload:</label> -->
+                    <h4 id="lbl-select-file">Please select a file to upload:</h4>
+                    <input id="btn-select-file" type="file" name="XMLFile" />
+                    <!-- <label for="btn-select-file" id="lbl-select-btn">Choose a file...</label><br> -->
+                    <input class="btn-action" type="submit" value="Upload" />
+                </form>
+            </div>
+            
+        </div>
+    </div>
+
+
 
     <!-- <form action="/download" method="post">
         <input type="submit" value="Download" />

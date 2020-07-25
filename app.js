@@ -6,11 +6,10 @@ const fs = require('fs');
 parseString = require("xml2js").parseString;
 xml2js = require("xml2js");
 
-//TODO
-//Check out "multiple"
-//Clean up code
-
 const app = express();
+
+let fileName = null;
+let manipulateSuccess = false;
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,14 +26,25 @@ app.post('/', (req, res, next) => {
 
     form.on('fileBegin', function (name, file){
         file.path = __dirname + '/uploads/' + 'uploaded_file.xml';
+        fileName = name;
     });
+
+    if(fileName === null){
+        res.send("No file selected");
+        return;
+    }
 
     form.on('file', function(name, file){
         console.log('Uploaded ' + file.name);
-        Manipulate();
+        manipulateSuccess = Manipulate();
     });
 
-    res.sendFile(__dirname + '/download.html');
+    if(manipulateSuccess){
+        res.sendFile(__dirname + '/download.html');
+    } else {
+        res.send("Conversion failed - please try again");
+    }
+
 });
 
 app.post('/download', (req, res) => {
@@ -47,38 +57,36 @@ app.post('/download', (req, res) => {
       });
 });
 
-function Manipulate(){
+function Manipulate(){  
     fs.readFile(__dirname + "/uploads/uploaded_file.xml", "utf-8", function(err, data) {
-        if (err) console.log(err);
-
-        //console.log("*****************DATA:");
-        //console.log(data);
+        if (err) {
+            console.log(err);
+            return false;
+        }
 
         parseString(data, function(err, result) {
-          if (err) console.log(err);
-
-        //   console.log("*****************RESULT:");
-        //   console.log(typeof(result));
-        //   console.log(JSON.stringify(result));
-
-          //const jsonData = JSON.parse(result);
-          //console.log(result.record.services[0].dms_customer_key[0]);
+          if (err) {
+            console.log(err);
+            return false;
+          } 
 
           delete result.record.services[0].dms_customer_key;
           delete result.record.services[1].dms_customer_key;
-
-          //console.log(JSON.stringify(result));
 
           var builder = new xml2js.Builder();
           var xml = builder.buildObject(result);
 
           fs.writeFile(__dirname + "/for_download/file_for_download.xml", xml, function(err, data) {
-          if (err) console.log(err);
+          if (err) {
+              console.log(err);
+              return false;
+          }
 
           console.log("successfully written our update xml to file");
-          });
+            });
         });
-      });
+    });
+    return true;
 }
 
 

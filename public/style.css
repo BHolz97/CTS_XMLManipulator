@@ -1,0 +1,79 @@
+body{
+    color: #222831;
+    background-color: #393e46;
+}
+
+.main-div{
+    width: 35%;
+    margin: auto;
+    /* background-color: red; */
+    text-align: center;
+    margin-top: 12vh;
+}
+
+.form-div{
+    background-color: #eeeeee;
+    width: 80%;
+    margin: auto;
+    padding-top: 2%;
+    border-radius: 15px;
+    /* -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75); */
+}
+
+#btn-select-file{
+    margin-top: 20%;
+    margin-left: 19%;
+    /* width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1; */
+}
+
+#lbl-select-btn{
+    margin-top: 17%;
+    background-color: #00adb5;
+    padding: 12px;
+    color: #eeeeee;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#lbl-select-btn:hover {
+    background-color: #02858b;
+}
+
+#lbl-select-file{
+    margin-top: 7%;
+}
+
+#upload-heading{
+    margin-bottom: 5vh;
+    color: #eeeeee;
+}
+
+.btn-action{
+    margin-top: 20%;
+    background-color: #00adb5;
+    margin-bottom: 12%;
+    padding: 12px;
+    color: #eeeeee;
+    font-weight: bold;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+
+#btn-upload:hover {
+    background-color: #00cdd8;
+}
+
+#btn-download{
+    margin-top: 10%;
+}
