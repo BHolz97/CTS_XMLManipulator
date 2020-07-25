@@ -8,6 +8,7 @@ xml2js = require("xml2js");
 
 //TODO
 //Check out "multiple"
+//Clean up code
 
 const app = express();
 
@@ -15,14 +16,6 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", function(req, res){
-    ///////////////////////////////////////////////////////
-    // fs.readFile(__dirname + '/uploads/HelloWorld.txt', 'utf8', function (err,data) {
-    //     if (err) {
-    //       return console.log(err);
-    //     }
-    //     console.log(data);
-    //   });
-      /////////////////////////////////////////////////////
     res.sendFile(__dirname + "/index.html");
 });
 
@@ -38,10 +31,10 @@ app.post('/', (req, res, next) => {
 
     form.on('file', function(name, file){
         console.log('Uploaded ' + file.name);
-        ParseXmlToJson();
+        Manipulate();
     });
 
-    res.sendFile(__dirname + '/index.html');
+    res.sendFile(__dirname + '/download.html');
 });
 
 app.post('/download', (req, res) => {
@@ -49,12 +42,12 @@ app.post('/download', (req, res) => {
         if (err) {
           console.log(err);
         } else {
-          console.log("Successfull doanload");
+          console.log("Successful download");
         }
       });
 });
 
-function ParseXmlToJson(){
+function Manipulate(){
     fs.readFile(__dirname + "/uploads/uploaded_file.xml", "utf-8", function(err, data) {
         if (err) console.log(err);
 
