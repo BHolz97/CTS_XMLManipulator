@@ -37,6 +37,7 @@ app.post('/', (req, res, next) => {
     form.on('file', function(name, file){
         console.log('Uploaded ' + file.name);
         manipulateSuccess = Manipulate();
+        console.log("****************Finished manipulating");
     });
 
     if(manipulateSuccess){
@@ -58,17 +59,22 @@ app.post('/download', (req, res) => {
 });
 
 function Manipulate(){  
+    console.log("****************Manip Func");
     fs.readFile(__dirname + "/uploads/uploaded_file.xml", "utf-8", function(err, data) {
         if (err) {
             console.log(err);
             return false;
         }
 
+        console.log("****************File Read");
+
         parseString(data, function(err, result) {
           if (err) {
             console.log(err);
             return false;
           } 
+
+          console.log("****************File Parsed");
 
           delete result.record.services[0].dms_customer_key;
           delete result.record.services[1].dms_customer_key;
